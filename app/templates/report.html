@@ -2,9 +2,11 @@
 <head>
 	<meta charset="utf8">
 	<title>基因检测报告</title>
-	<link rel="stylesheet" href="/home/woods/project/genetech/app/static/pdfpage.css">
+	<link rel="stylesheet" href="/home/woods/project/genetech/app/static/css/pdfpage.css">
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">                  
 </head>
 <body>
+	<!-- page one -->
 	<div class="header">
 		<p>报告基本信息</p>
 	</div>
@@ -77,4 +79,35 @@
 		<p>中科院团队联合研发</p>
 		<p>中科院教授&nbsp&nbsp&nbsp特邀首席科学家监制</p>	
 	</div>
+	<!-- end page one -->
+	
+	<!-- page two -->
+	<div class="head-bar">
+		<span class="head-left">
+			<img class="icon" src="/home/woods/project/genetech/app/static/font/dna-icon.png" >
+		</span>
+		<span class="head-right">基因检测结果和关联风险评估</span>
+	</div>
+	<div class="result">
+		<li>			
+			<span class="test-title">
+				<i class="fa fa-dot-circle-o fa-1g"></i> 您的风险等级:
+			</span>	
+			<span class="test-content-one">
+				<span class="circle"><i class="fa fa-user-md fa-2x"></i></span>
+				<p class="risk">较高风险</p>
+			</span>
+		</li>
+		<li>
+			<span class="test-title">
+				<i class="fa fa-dot-circle-o fa-1g"></i> 您的结果显示:
+			</span>	
+			<span class="test-content-one">
+				<p>您的相关疾病风险略高于普通人，但不需要过度担忧，可以通过外界干预来控制风险。</p>			
+			</span>
+		</li>
+	</div>
+	<!-- end page two -->
+	
+	
 </body>
