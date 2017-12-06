@@ -116,11 +116,13 @@ div.result {
 	padding:10px 5px;
 	margin-bottom: 20px;
 }
-div.result li {
+div.result .plate {
 	margin: 10px 0;
 	list-style-type: none;
 	vertical-align: middle;
 	margin: auto 0;
+	display: block;
+	height: 100%;
 }
 span.test-title {
 	width: 25%;
@@ -128,21 +130,26 @@ span.test-title {
 	font-size: 20px;
 	color: green;	
 }
+p.test-title {
+	font-size: 20px;
+	color: green;
+}
 span.test-content-one {
 	width: 75%;
-	height: 100%;
+	height: 80px;
 	text-align: center;
 	float: left;
+	display: inline-block;
 }
 .circle {
-	width: 50px;
-	height: 50px;
-	background-color: red;
+	width: 10%;
+	height: 100%;
+	background-color: yellowgreen;
 	border-radius: 50%;
+	padding:20px 10px;
 	/*-moz-border-radius: 50%;
 	-webkit-border-radius: 50%;*/
-
-	position: relative;
+	display: inline-block;
 }
 p.risk {
 	background-color: yellowgreen;
@@ -150,6 +157,87 @@ p.risk {
 	border-radius: 5px;
 	display: inline;
 	margin: 0 20px;
+	position: relative;
 }
 
+div.table-like {
+	margin: 15px 0;
+	display: block;
+	width: 100%;
+}
 
+div.table-row {
+	border:0;
+	margin:0;
+	padding:0;
+	display: block;
+	height: 60px;
+	width: 100%;
+	text-align: center;
+}
+span.table-left {
+	display: inline;
+	position: relative;
+	float: left;
+	width: 20%;
+	height: 100%;
+	padding:18px 0;
+	background-color: #2E8B57;
+	color: white;
+	font-size: 20px;
+}
+span.table-middle {
+	display: inline;
+	position: relative;
+	float: left;
+	width: 30%;
+	height: 100%;
+	padding: 18px 0;
+	background-color:  #E6E6FA;
+	font-size: 20px;
+}
+span.table-right {
+	display: inline;
+	position: relative;
+	float: left;
+	width: 50%;
+	height: 100%;
+	padding: 18px 0;
+	font-size: 20px;
+	background-color: #F0FFF0;
+}
+
+#customers {
+	width: 100%;
+	border: none;
+	margin: 15px 0;
+	border-collapse: separate;
+}
+#customers th, #customers td {
+	text-align: center;
+}
+#customers tr.header {
+	margin-bottom: 10px;
+	border-spacing: 30px;
+}
+#customers th {
+	background-color: #2E8B57;
+	font-size: 18px;
+	color: white;
+	height: 50px;
+	padding: 18px 0;
+	border-spacing: 10px 30px;
+}
+#customers td {
+	height: 40px;
+}
+#customers td.left {
+	width: 20%;
+	margin: 5px 8px;
+}
+#customers td.ying {
+	background-color: #F0FFF0;
+}
+#customers td.yang {
+	background-color: #E6E6FA;
+}
