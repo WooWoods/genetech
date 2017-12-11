@@ -17,63 +17,63 @@
 				<p class="character">姓名</p>
 				<p class="letter">User Name</p>			
 			</span>
-			<span class="item-content">马树霞</span>
+			<span class="item-content">{{ testdata['username'] }}</span>
 		</li>
 		<li>
 			<span class="item-name">
 				<p class="character">性别</p>
 				<p class="letter">Gender</p>
 			</span>
-			<span class="item-content">女</span>
+			<span class="item-content">{{ testdata['gender'] }}</span>
 		</li>
 		<li>
 			<span class="item-name">
 				<p class="character">ID识别号</p>
 				<p class="letter">ID identification number</p>
 			</span>
-			<span class="item-content">010001534</span>
+			<span class="item-content">{{ testdata['ID'] }}</span>
 		</li>
 		<li>
 			<span class="item-name">
 				<p class="character">报告类型</p>
 				<p class="letter">Report Type</p>
 			</span>
-			<span class="item-content">卫士基因检测 - I</span>
+			<span class="item-content">{{ testdata['testname'] }}</span>
 		</li>
 		<li>
 			<span class="item-name">
 				<p class="character">报告编号</p>
 				<p class="letter">Report Number</p>
 			</span>
-			<span class="item-content">010001534</span>
+			<span class="item-content">{{ testdata['reportnum'] }}</span>
 		</li>
 		<li>
 			<span class="item-name">
 				<p class="character">检测时间</p>
 				<p class="letter">Testing Time</p>
 			</span>
-			<span class="item-content">2017-11-13</span>
+			<span class="item-content">{{ testdata['testdate'] }}</span>
 		</li>
 		<li>
 			<span class="item-name">
 				<p class="character">报告单位</p>
 				<p class="letter">Reporting Institution</p>
 			</span>
-			<span class="item-content">中科院团队上海基因检测实验室</span>
+			<span class="item-content">{{ testdata['reportdanwei'] }}</span>
 		</li>
 		<li>
 			<span class="item-name">
 				<p class="character">送检单位</p>
 				<p class="letter">Inspection Institution</p>
 			</span>
-			<span class="item-content">/</span>
+			<span class="item-content">{{ testdata['inspect'] }}</span>
 		</li>
 		<li>
 			<span class="item-name">
 				<p class="character">报告日期</p>
 				<p class="letter">Reporting Date</p>
 			</span>
-			<span class="item-content">2017-11-16</span>
+			<span class="item-content">{{ testdata['reportdate'] }}</span>
 		</li>
 	</div>
 	<div class="signature">
@@ -95,7 +95,14 @@
 				<i class="fa fa-dot-circle-o fa-1g"></i> 您的风险等级:
 			</span>	
 			<span class="test-content-one">
-				<span class="circle"><i class="fa fa-user-md fa-2x" style="color:white"></i></span>
+				<span class="circle" style="background-color:{% if testdata['level'] == 'low' %}
+				                                              #006400
+				                                              {% elif testdata['level'] == 'middle' %}
+				                                              #808000
+				                                              {% else %}
+				                                              #A52A2A
+				                                              {% endif %};">
+				<i class="fa fa-user-md fa-2x" style="color:white"></i></span>
 				<div class="square"></div>
 				<p class="risk">较高风险</p>
 			</span>
@@ -125,7 +132,7 @@
 				</div>
 				<div class="table-row">
 					<span class="table-left">检测结果</span>
-					<span class="table-middle" style="color: red">+/-</span>
+					<span class="table-middle" style="color: red">{{ testdata['genotype'] }}</span>
 					<span class="table-right">检测结果“+”，表示您患相关疾病的概率偏高</span>
 				</div>
 			</div>
@@ -148,8 +155,8 @@
 							<div class="pin"></div>
 						</div>
 					</td>
-					<td class="yang">18.4</td>
-					<td class="yang">20.1</td>
+					<td class="yang">{{ testdata['ref']['wei'] }}</td>
+					<td class="yang">{[ testdata['risk']['wei'] }}</td>
 					<td class="yang">
 						<i class="fa fa-eye fa-1g" style="color:#DC143C;"></i>
 						<i class="fa fa-eye fa-1g" style="color:#789;"></i>
@@ -160,12 +167,12 @@
 				<tr>
 					<td class="left">
 						<div class="square-pin">
-							<div class="square-td">胃癌</div>
+							<div class="square-td">肺癌</div>
 							<div class="pin"></div>
 						</div>
 					</td>
-					<td class="ying">18.4</td>
-					<td class="ying">20.1</td>
+					<td class="ying">{{ testdata['ref']['fei'] }}</td>
+					<td class="ying">{{ testdata['risk']['fei'] }}</td>
 					<td class="ying">
 						<i class="fa fa-eye fa-1g" style="color:#DC143C;"></i>
 						<i class="fa fa-eye fa-1g" style="color:#789;"></i>
@@ -176,12 +183,12 @@
 				<tr>
 					<td class="left">
 						<div class="square-pin">
-							<div class="square-td">胃癌</div>
+							<div class="square-td">食道癌</div>
 							<div class="pin"></div>
 						</div>
 					</td>
-					<td class="yang">18.4</td>
-					<td class="yang">20.1</td>
+					<td class="yang">{{ testdata['ref']['shidao'] }}</td>
+					<td class="yang">{{ testdata['risk']['shidao'] }}</td>
 					<td class="yang">
 						<i class="fa fa-eye fa-1g" style="color:#DC143C;"></i>
 						<i class="fa fa-eye fa-1g" style="color:#789;"></i>
@@ -192,12 +199,12 @@
 				<tr>
 					<td class="left">
 						<div class="square-pin">
-							<div class="square-td">胃癌</div>
+							<div class="square-td">膀胱癌</div>
 							<div class="pin"></div>
 						</div>
 					</td>
-					<td class="ying">18.4</td>
-					<td class="ying">20.1</td>
+					<td class="ying">{{ testdata['ref']['pangguang'] }}</td>
+					<td class="ying">{{ testdata['risk']['pangguang'] }}</td>
 					<td class="ying">
 						<i class="fa fa-eye fa-1g" style="color:#DC143C;"></i>
 						<i class="fa fa-eye fa-1g" style="color:#789;"></i>
@@ -208,12 +215,44 @@
 				<tr>
 					<td class="left">
 						<div class="square-pin">
-							<div class="square-td">胃癌</div>
-							<div class="pin"></div>
+							<div class="square-td" style="background-color:#808000">乳腺癌</div>
+							<div class="pin" style="background-color:#808000"></div>
 						</div>
 					</td>
-					<td class="yang">18.4</td>
+					<td class="yang">{{ testdata['ref']['ruxian'] }}</td>
+					<td class="yang">{{ testdata['risk']['ruxian'] }}</td>
+					<td class="yang">
+						<i class="fa fa-eye fa-1g" style="color:#DC143C;"></i>
+						<i class="fa fa-eye fa-1g" style="color:#789;"></i>
+						<i class="fa fa-eye fa-1g" style="color:#789;"></i>
+						<i class="fa fa-eye fa-1g" style="color:#789;"></i>
+					</td>
+				</tr>
+				<tr>
+					<td class="left">
+						<div class="square-pin">
+							<div class="square-td" style="background-color:#808000">宫颈癌</div>
+							<div class="pin" style="background-color:#808000"></div>
+						</div>
+					</td>
+					<td class="yang">{{ testdata['ref']['gongjin'] }}</td>
 					<td class="yang">20.1</td>
+					<td class="yang">
+						<i class="fa fa-eye fa-1g" style="color:#DC143C;"></i>
+						<i class="fa fa-eye fa-1g" style="color:#789;"></i>
+						<i class="fa fa-eye fa-1g" style="color:#789;"></i>
+						<i class="fa fa-eye fa-1g" style="color:#789;"></i>
+					</td>
+				</tr>
+								<tr>
+					<td class="left">
+						<div class="square-pin">
+							<div class="square-td" style="background-color:#6495ED">前列腺癌</div>
+							<div class="pin" style="background-color:#6495ED"></div>
+						</div>
+					</td>
+					<td class="yang">{{ testdata['ref']['qianliexian'] }}</td>
+					<td class="yang">{{ testdata['risk']['qianliexian'] }}</td>
 					<td class="yang">
 						<i class="fa fa-eye fa-1g" style="color:#DC143C;"></i>
 						<i class="fa fa-eye fa-1g" style="color:#789;"></i>

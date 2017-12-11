@@ -1,7 +1,7 @@
 # -×- coding:utf-8 -*-
 
 from datetime import datetime
-import bleach
+#import bleach
 from flask import current_app
 from . import db
 
