@@ -1,0 +1,7 @@
+卫士基因检测-I	wei	18.4	
+卫士基因检测-I	fei	19.5	
+卫士基因检测-I	shidao	24.5
+卫士基因检测-I	pangguang	14.2	
+卫士基因检测-I	qianliexian	15
+卫士基因检测-I	ruxian	17.2
+卫士基因检测-I	gongjin	17.2

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8"/>
+	<title>基因检测报告</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/pdfpage.css') }}">
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">                  
+</head>
+<body>
+	<!-- page one -->
+	<div class="header">
+		<p>报告基本信息</p>
+	</div>
+	<div class="form-restyle"> 
+	<form method="post" action="">
+	   {{ form.hidden_tag() }}
+		<div class="row">
+			<span class="inputlabel">
+				<p class="upper">姓名</p>
+				<p class="lower">User Name</p>			
+			</span>
+			<div class="input-prepend">
+			{{ form.username }}
+			</div>
+		</div>
+		<div class="row">
+			<span class="inputlabel">
+				<p class="upper">性别</p>
+				<p class="lower">Gender</p>
+			</span>
+			<div class="input-prepend">
+			{{ form.gender }}
+			</div>
+		</div>
+		<div class="row">
+			<span class="inputlabel">
+				<p class="upper">ID识别号</p>
+				<p class="lower">ID identification number</p>
+			</span>
+			<div class="input-prepend">
+			{{ form.ID }}
+			</div>
+		</div>
+		<div class="row">
+			<span class="inputlabel">
+				<p class="upper">报告类型</p>
+				<p class="lower">Report Type</p>
+			</span>
+			<div class="input-prepend">
+			{{ form.report_type(placeholder="卫士基因检测 - I") }}
+			</div>
+		</div>
+		<div class="row">
+			<span class="inputlabel">
+				<p class="upper">基因型</p>
+				<p class="lower">Genotype</p>
+			</span>
+			<div class="input-prepend">
+			{{ form.genotype(placeholder="-/-") }}
+			</div>
+		</div>
+		<div class="row">
+			<span class="inputlabel">
+				<p class="upper">报告编号</p>
+				<p class="lower">Report Number</p>
+			</span>
+			<div class="input-prepend">
+			{{ form.report_num }}
+			</div>
+		</div>
+		<div class="row">
+			<span class="inputlabel">
+				<p class="upper">检测时间</p>
+				<p class="lower">Testing Time</p>
+			</span>
+			<div class="input-prepend">
+			{{ form.test_time(type="date") }}
+			</div>
+		</div>
+		<div class="row">
+			<span class="inputlabel">
+				<p class="upper">报告单位</p>
+				<p class="lower">Reporting Institution</p>
+			</span>
+			<div class="input-prepend">
+			{{ form.report_danwei(placeholder="中科院团队上海基因检测实验室") }}
+			</div>
+		</div>
+		<div class="row">
+			<span class="inputlabel">
+				<p class="upper">送检单位</p>
+				<p class="lower">Inspection Institution</p>
+			</span>
+			<div class="input-prepend">
+			{{ form.inspect_danwei(placeholder="/") }}
+			</div>
+		</div>
+		<div class="row">
+			<span class="inputlabel">
+				<p class="upper">报告日期</p>
+				<p class="lower">Reporting Date</p>
+			</span>
+			<div class="input-prepend">
+			{{ form.report_time(type="date") }}
+			</div>
+		</div>
+		{{ form.submit(class="sign-in-button", value="提交") }} 
+	</form>
+	</div>
+</body>
+</html>
