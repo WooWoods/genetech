@@ -29,7 +29,7 @@ body {
 	list-style-type: none;
 	margin: 15px auto;
 	padding: 5px 0;
-	height: 60px;
+	height: 65px;
 	vertical-align: middle;
 	overflow: hidden;
 }
@@ -40,16 +40,16 @@ span.item-name {
 	text-align: left;
 	height: 100%;
 	float: left;
-	padding:10px 5px;
+	padding:5px 5px;
 	overflow: hidden;
 }
 span.item-name p.character {
-	font-size: 20px;
+	font-size: 18px;
 	margin:2px 0;
 }
 span.item-name p.letter {
-	font-size: 13px;
-	margin:2px 0;
+	font-size: 11px;
+	margin:1px 0;
 }
 
 span.item-content {

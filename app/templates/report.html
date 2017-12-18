@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf8">
 	<title>基因检测报告</title>
-	<link rel="stylesheet" href="/home/woods/project/genetech/app/static/css/pdfpage.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/pdfpage.css') }}">
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">                  
 </head>
 <body>
@@ -85,7 +85,7 @@
 	<!-- page two -->
 	<div class="head-bar">
 		<span class="head-left">
-			<img class="icon" src="/home/woods/project/genetech/app/static/font/dna-icon.png" >
+			<img class="icon" src="{{ url_for('static', filename='font/dna-icon.png') }}" >
 		</span>
 		<span class="head-right">基因检测结果和关联风险评估</span>
 	</div>
@@ -103,8 +103,20 @@
 				                                              #A52A2A
 				                                              {% endif %};">
 				<i class="fa fa-user-md fa-2x" style="color:white"></i></span>
-				<div class="square"></div>
-				<p class="risk">较高风险</p>
+				<div class="square" style="background-color:{% if testdata['level'] == 'low' %}
+				                                              #006400
+				                                              {% elif testdata['level'] == 'middle' %}
+				                                              #808000
+				                                              {% else %}
+				                                              #A52A2A
+				                                              {% endif %};"></div>
+				<p class="risk" style="background-color:{% if testdata['level'] == 'low' %}
+				                                              #006400
+				                                              {% elif testdata['level'] == 'middle' %}
+				                                              #808000
+				                                              {% else %}
+				                                              #A52A2A
+				                                              {% endif %};">较高风险</p>
 			</span>
 		</div>
 		<div class="plate">
