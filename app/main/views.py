@@ -11,17 +11,17 @@ from ..models import Genes, Genotypes
 @main.route('/', methods=['GET', 'POST'])
 def index():
     form = OrderForm()
-    print('come here')
     if form.validate_on_submit():
         testname = form.report_type.data
         geneinfo = Genes.query.filter_by(testname=testname).first()
-        print('i am here')
         if not geneinfo:
             flash('你输入的检测项目不存在')
         genotype = form.genotype.data
         riskinfo = Genotypes.query.filter_by(gene_id=geneinfo.id, genotype=genotype).first()
         testdata = data_to_front(form, geneinfo, riskinfo)
         return render_template('report.html', testdata=testdata)
+#    else:
+#        print form.errors
     return render_template('infogather.html', form=form)
         
         
@@ -35,7 +35,7 @@ def data_to_front(form, geneinfo, riskinfo):
     data['testdate'] = form.test_time.data
     data['reportdanwei'] = form.report_danwei.data
     data['inspect'] = form.inspect_danwei.data
-    data['reportdate'] = form.reportdate.data
+    data['reportdate'] = form.report_time.data
     genotype = form.genotype.data
     data['genotype'] = genotype
     if genotype == '+/-':
@@ -45,21 +45,22 @@ def data_to_front(form, geneinfo, riskinfo):
     if genotype == '+/+':
         data['level'] = 'high'
 
-    data['ref']['wei'] = geneinfo.wei
-    data['ref']['fei'] = geneinfo.fei
-    data['ref']['shidao'] = geneinfo.shidao
-    data['ref']['pangguang'] = geneinfo.pangguang
-    data['ref']['ruxian'] = geneinfo.ruxian
-    data['ref']['gongjin'] = geneinfo.gongjin
-    data['ref']['qianliexian'] = geneinfo.qianliexian
+    data.setdefault('ref', {})['wei'] = geneinfo.wei
+    data.setdefault('ref', {})['fei'] = geneinfo.fei
+    data.setdefault('ref', {})['shidao'] = geneinfo.shidao
+    data.setdefault('ref', {})['pangguang'] = geneinfo.pangguang
+    data.setdefault('ref', {})['ruxian'] = geneinfo.ruxian
+    data.setdefault('ref', {})['gongjin'] = geneinfo.gongjin
+    data.setdefault('ref', {})['qianliexian'] = geneinfo.qianliexian
 
-    data['risk']['wei'] = riskinfo.wei
-    data['risk']['fei'] = riskinfo.fei
-    data['risk']['shidao'] = riskinfo.shidao
-    data['risk']['pangguang'] = riskinfo.pangguang
-    data['risk']['ruxian'] = riskinfo.ruxian
-    data['risk']['gongjin'] = riskinfo.gongjin
-    data['risk']['qianliexian'] = riskinfo.qianliexian
+    data.setdefault('risk', {})['wei'] = riskinfo.wei
+    data.setdefault('risk', {})['fei'] = riskinfo.fei
+    data.setdefault('risk', {})['shidao'] = riskinfo.shidao
+    data.setdefault('risk', {})['pangguang'] = riskinfo.pangguang
+    data.setdefault('risk', {})['ruxian'] = riskinfo.ruxian
+    data.setdefault('risk', {})['gongjin'] = riskinfo.gongjin
+    data.setdefault('risk', {})['qianliexian'] = riskinfo.qianliexian
+    return data
 
 
     

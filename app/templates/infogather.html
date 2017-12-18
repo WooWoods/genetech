@@ -3,6 +3,7 @@
 <head>
    <meta charset="utf-8"/>
 	<title>基因检测报告</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename="css/bootstrap.min.css") }}">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/pdfpage.css') }}">
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">                  
 </head>
@@ -18,8 +19,9 @@
 	</div>
 	{% endfor %}
 	<div class="form-restyle"> 
-	<form method="post" action="">
-	   {{ form.hidden_tag() }}
+	<form method="POST" role="form">
+
+	    {{ form.csrf_token }}
 		<div class="row">
 			<span class="inputlabel">
 				<p class="upper">姓名</p>
@@ -53,7 +55,11 @@
 				<p class="lower">Report Type</p>
 			</span>
 			<div class="input-prepend">
-			{{ form.report_type(placeholder="卫士基因检测 - I") }}
+			{{ form.report_type(placeholder="卫士基因检测 - I", list="test-list") }}
+			<datalist id="test-list">
+				<option value="卫士基因检测-II">
+				<option value="卫士基因检测-III">
+			</datalist>
 			</div>
 		</div>
 		<div class="row">
@@ -110,7 +116,8 @@
 			{{ form.report_time(type="date") }}
 			</div>
 		</div>
-		{{ form.submit(class="sign-in-button", value="提交") }} 
+		<!--{{ form.submit(class="sign-in-button", value="提交") }}-->
+		{{ form.submit }} 
 	</form>
 	</div>
 </body>
