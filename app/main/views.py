@@ -1,6 +1,9 @@
 # -*- coding:utf-8 -*-
+import os
 from datetime import datetime
-from flask import render_template, session, redirect, url_for, flash
+from flask import render_template, session, redirect, url_for, flash, current_app, send_from_directory
+#from flask_weasyprint import HTML, render_pdf
+import pdfkit
 
 from . import main
 from .forms import OrderForm
@@ -19,11 +22,32 @@ def index():
         genotype = form.genotype.data
         riskinfo = Genotypes.query.filter_by(gene_id=geneinfo.id, genotype=genotype).first()
         testdata = data_to_front(form, geneinfo, riskinfo)
+        html = render_template('pdf_template.html', testdata=testdata)
+        #css = url_for('static', filename='css/pdfpage.css')
+        #css = os.path.join(path, '../%s' % css)
+        css = '/home/woods/project/genetech/app/static/css/pdfpage.css'
+        options = {
+            'page-size': 'A4',
+            'margin-top': '0.60in',
+            'margin-right': '0.25in',
+            'margin-bottom': '0.20in',
+            'margin-left': '0.25in',
+            'encoding': 'UTF-8',
+             }
+        #output = os.path.join(current_app.root_path, 'downloads/report.pdf')
+        output = 'app/downloads/report.pdf' 
+        pdfkit.from_string(html, output, css=css, options=options)
         return render_template('report.html', testdata=testdata)
 #    else:
 #        print form.errors
     return render_template('infogather.html', form=form)
-        
+
+@main.route('/downloads/<path:filename>', methods=['GET', 'POST'])
+def download(filename):
+    downloads = os.path.join(current_app.root_path, 'downloads')
+    print downloads
+    return send_from_directory(directory=downloads, filename=filename, as_attachment=True)
+    
         
 def data_to_front(form, geneinfo, riskinfo):
     data = {}

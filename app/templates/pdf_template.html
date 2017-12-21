@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf8">
 	<title>基因检测报告</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/pdfpage.css') }}">
+	<link rel="stylesheet" href="/home/woods/project/genetech/app/static/css/pdfpage.css">
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">                  
 </head>
 <body>
@@ -85,7 +85,7 @@
 	<!-- page two -->
 	<div class="head-bar">
 		<span class="head-left">
-			<img class="icon" src="{{ url_for('static', filename='font/dna-icon.png') }}" >
+			<img class="icon" src="/home/woods/project/genetech/app/static/font/dna-icon.png" >
 		</span>
 		<span class="head-right">基因检测结果和关联风险评估</span>
 	</div>
@@ -335,6 +335,5 @@
 		</div>
 	</div>
 	<!-- end page two -->
-	<a href="{{ url_for('main.download', filename='report.pdf') }}">Download Report</a>
 </body>
 </html>

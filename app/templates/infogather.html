@@ -20,8 +20,7 @@
 	{% endfor %}
 	<div class="form-restyle"> 
 	<form method="POST" role="form">
-
-	    {{ form.csrf_token }}
+	    {{ form.hidden_tag() }}
 		<div class="row">
 			<span class="inputlabel">
 				<p class="upper">姓名</p>
@@ -116,8 +115,7 @@
 			{{ form.report_time(type="date") }}
 			</div>
 		</div>
-		<!--{{ form.submit(class="sign-in-button", value="提交") }}-->
-		{{ form.submit }} 
+		{{ form.submit(class="sign-in-button", value="提交") }} 
 	</form>
 	</div>
 </body>
